@@ -7,7 +7,7 @@
 
 using namespace std;
 
-#define N 8
+#define N 9
 list<int> Adj[N];
 list<int> Q;
 
@@ -22,12 +22,12 @@ int d[N] = {0};
 int f[N] = {0};
 int tempo = 0;
 
-const char* vert[N] = {"s", "t", "u", "v", "x", "y", "w", "z"};
+const char* vert[N] = {"s", "t", "u", "v", "x", "y", "w", "z", "a"};
 
-enum Vertices {s,t,u,v,x,y,w,z};
+enum Vertices {s,t,u,v,x,y,w,z, a};
 			 //0,1,2,3,4,5,6,7
-void inicializa_grafo()
-{
+void inicializa_grafo(){
+   Adj[a].push_back(s);
    Adj[s].push_back(z); 
    Adj[s].push_back(w);
    Adj[z].push_back(y);
@@ -49,6 +49,7 @@ void DFS_VISIT(int u){
 	tempo = tempo + 1;
 	d[u] = tempo;
 	grau_saida[u] = Adj[u].size();
+	//grau_saida[u] = grau_saida[u] + 1;
 
 	//printf("cor[%s] =  cinza \t d[%s] = %d\n", vert[u], vert[u], tempo);
 
